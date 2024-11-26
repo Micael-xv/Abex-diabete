@@ -8,9 +8,9 @@
       >
         <v-list>
           <v-list-item
-            prepend-avatar="algo"
-            subtitle="algo"
-            title="algo"
+            prepend-avatar=""
+            subtitle=""
+            title=""
           />
         </v-list>
 
