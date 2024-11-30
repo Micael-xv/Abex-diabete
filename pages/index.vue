@@ -52,11 +52,11 @@
             <v-card-text class="text-center">
               <v-btn
                 class="text-blue text-decoration-none mt-n2"
-                to="signup"
                 rel="noopener noreferrer"
                 variant="tonal"
                 elevation="1"
                 rounded="xl"
+                to="/cadastro/"
               >
                 Inscreva-se agora <v-icon icon="mdi-chevron-right" />
               </v-btn>

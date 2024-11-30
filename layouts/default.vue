@@ -18,6 +18,7 @@
 
         <v-list density="compact" nav>
           <v-list-item prepend-icon="mdi-home" to="/" title="Home" value="home"/>
+          <v-list-item prepend-icon="mdi-home" to="/analise" title="Analise de Diabetes" value="Analise"/>
         </v-list>
       </v-navigation-drawer>
       <v-main style="height: 100vh; background-color: black">
