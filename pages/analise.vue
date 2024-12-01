@@ -15,31 +15,31 @@
           </v-card-item>
           <v-row class="pa-3 mt-n9">
             <v-col>
-              <v-text-field density="compact" label="Age" variant="outlined"/>
+              <v-text-field density="compact" label="Idade" variant="outlined"/>
             </v-col>
             <v-col>
-              <v-text-field density="compact" label="Insulin" variant="outlined"/>
-            </v-col>
-          </v-row>
-          <v-row class="pa-3 mt-n9">
-            <v-col>
-              <v-text-field density="compact" label="Pregnancies" variant="outlined"/>
-            </v-col>
-            <v-col>
-              <v-text-field density="compact" label="BMI" variant="outlined"/>
+              <v-text-field density="compact" label="Insulina" variant="outlined"/>
             </v-col>
           </v-row>
           <v-row class="pa-3 mt-n9">
             <v-col>
-              <v-text-field density="compact" label="Glucose" variant="outlined"/>
+              <v-text-field density="compact" label="Gravidez" variant="outlined"/>
             </v-col>
             <v-col>
-              <v-text-field density="compact" label="Skin Thickness" variant="outlined"/>
+              <v-text-field density="compact" label="IMC" variant="outlined"/>
             </v-col>
           </v-row>
           <v-row class="pa-3 mt-n9">
             <v-col>
-              <v-text-field density="compact" label="Blood Pressure" variant="outlined"/>
+              <v-text-field density="compact" label="Glicose" variant="outlined"/>
+            </v-col>
+            <v-col>
+              <v-text-field density="compact" label="Espessura da pele" variant="outlined"/>
+            </v-col>
+          </v-row>
+          <v-row class="pa-3 mt-n9">
+            <v-col>
+              <v-text-field density="compact" label="Pressão arterial" variant="outlined"/>
             </v-col>
             <v-col>
               <v-text-field density="compact" label="DPF" variant="outlined"/>
