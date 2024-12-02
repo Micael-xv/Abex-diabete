@@ -21,13 +21,15 @@
             <div class="text-subtitle-1 text-medium-emphasis">Account</div>
   
             <v-text-field
+              v-model="sigin.email"
               density="compact"
               placeholder="Email address"
               prepend-inner-icon="mdi-email-outline"
               variant="outlined"
             />
-  
+
             <v-text-field
+              v-model="sigin.senha"
               :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
               :type="visible ? 'text' : 'password'"
               density="compact"
@@ -45,6 +47,7 @@
               block
               rounded="xl"
               elevation="1"
+              @click="pegaToken"
             >
               Entrar
             </v-btn>
@@ -78,13 +81,12 @@ export default {
     visible: false,
     sigin: {
       email: "",
-      password: "",
+      senha: "",
     },
-    visible: false,
   }),
   methods: {
     async pegaToken() {
-      if (this.sigin.email || this.sigin.password) {
+      if (this.sigin.email && this.sigin.senha) {
         try {
           const response = await this.$api.post(`/usuario/login`, {
             ...this.sigin,
@@ -92,18 +94,17 @@ export default {
           if (response.token) {
             localStorage.setItem("token", response.token);
             localStorage.setItem("user", JSON.stringify(response.user));
-            this.$toast.success("Login efetuado com sucesso!");
-            // console.log('Token:', response.token);
             setTimeout(() => {
-            this.$router.push("/analise").then(() => {
-              window.location.reload();
-            });
+              this.$router.push("/analise").then(() => {
+                window.location.reload();
+              });
             }, 2000);
           }
         } catch (error) {
-          // this.$toast.error("Erro ao fazer login:", error);
           this.$toast.error("Erro ao fazer login. Por favor, tente novamente.");
         }
+      } else {
+        this.$toast.error("Por favor, preencha todos os campos.");
       }
     },
   },

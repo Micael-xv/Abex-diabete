@@ -238,5 +238,11 @@ export default {
       showDialog: false,
     };
   },
+  mounted() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.$router.push('/');
+    }
+  }
 };
 </script>
