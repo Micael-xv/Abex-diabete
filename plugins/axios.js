@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export default defineNuxtPlugin(() => {
-  const domain = 'http://localhost:3333/'
+  const domain = 'http://localhost:3333/'; // API principal
+  const flaskApi = 'http://127.0.0.1:8000/'; // API Flask
 
   let api = axios.create({
     baseURL: domain,
@@ -12,7 +13,19 @@ export default defineNuxtPlugin(() => {
     }
   });
 
+  let aiApi = axios.create({
+    baseURL: flaskApi,
+  });
+
+  // Interceptor para a API principal
   api.interceptors.response.use(function (response) {
+    return response.data;
+  }, function (error) {
+    return Promise.reject(error);
+  });
+
+  // Interceptor para a API Flask
+  aiApi.interceptors.response.use(function (response) {
     return response.data;
   }, function (error) {
     return Promise.reject(error);
@@ -20,7 +33,8 @@ export default defineNuxtPlugin(() => {
 
   return {
     provide: {
-      api: api
+      api,      // API principal
+      aiApi,    // API Flask
     }
-  }
-})
+  };
+});

@@ -7,16 +7,16 @@
         <v-card-text>
           <v-form ref="registerForm">
             <v-text-field
-              v-model="registeruser.username"
-              label="Nome de Usuário"
+              v-model="registeruser.nome"
+              label="Nome Completo"
               variant="underlined"
               color="primary"
               required
             />
 
             <v-text-field
-              v-model="registeruser.name"
-              label="Nome Completo"
+              v-model="registeruser.sobrenome"
+              label="Sobrenome"
               variant="underlined"
               color="primary"
               required
@@ -32,7 +32,7 @@
             />
 
             <v-text-field
-              v-model="registeruser.phone"
+              v-model="registeruser.telefone"
               v-mask="['(##) ####-####', '(##) #####-####']"
               label="Telefone"
               variant="underlined"
@@ -49,7 +49,7 @@
             />
 
             <v-text-field
-              v-model="registeruser.password"
+              v-model="registeruser.senha"
               label="Senha"
               type="password"
               variant="underlined"
@@ -100,31 +100,29 @@ export default {
     return {
       terms: false,
       registeruser: {
-        username: "",
-        name: "",
+        nome: "",
+        sobrenome: "",
         cpf: "",
-        phone: "",
+        telefone: "",
         email: "",
-        password: "",
+        senha: "",
       },
     };
   },
 
   methods: {
     async register() {
-      // Verifica se todos os campos estão preenchidos
       if (!this.$refs.registerForm.validate() || !this.terms) {
         this.$toast.error("Preencha todos os campos e concorde com os termos!");
         return;
       }
-
       try {
-        const response = await this.$api.post("/users/register/", this.registeruser);
+        const response = await this.$api.post("/usuario/persist", this.registeruser);
         if (response.type === "error") {
           throw new Error("Erro ao cadastrar usuário");
         }
         this.$toast.success("Usuário cadastrado com sucesso!");
-        this.$router.push("/login/");
+        this.$router.push("/index");
       } catch (error) {
         this.$toast.error(error.message || "Erro ao cadastrar usuário!");
       }

@@ -76,7 +76,37 @@ export default {
   name: "IndexPage",
   data: () => ({
     visible: false,
+    sigin: {
+      email: "",
+      password: "",
+    },
+    visible: false,
   }),
+  methods: {
+    async pegaToken() {
+      if (this.sigin.email || this.sigin.password) {
+        try {
+          const response = await this.$api.post(`/usuario/login`, {
+            ...this.sigin,
+          });
+          if (response.token) {
+            localStorage.setItem("token", response.token);
+            localStorage.setItem("user", JSON.stringify(response.user));
+            this.$toast.success("Login efetuado com sucesso!");
+            // console.log('Token:', response.token);
+            setTimeout(() => {
+            this.$router.push("/analise").then(() => {
+              window.location.reload();
+            });
+            }, 2000);
+          }
+        } catch (error) {
+          // this.$toast.error("Erro ao fazer login:", error);
+          this.$toast.error("Erro ao fazer login. Por favor, tente novamente.");
+        }
+      }
+    },
+  },
 };
 </script>
 
