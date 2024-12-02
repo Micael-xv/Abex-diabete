@@ -195,13 +195,10 @@ const form = ref({
   DPF: null,
 });
 
-// Resultado da previsão
 const result = ref("");
 
-// Obter instância da API Flask
 const { $aiApi } = useNuxtApp();
 
-// Função para enviar os dados à API e obter a previsão
 const sendPredictionRequest = async () => {
   try {
     const response = await $aiApi.post("http://127.0.0.1:8000/predict", form.value);

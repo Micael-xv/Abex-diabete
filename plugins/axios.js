@@ -17,14 +17,12 @@ export default defineNuxtPlugin(() => {
     baseURL: flaskApi,
   });
 
-  // Interceptor para a API principal
   api.interceptors.response.use(function (response) {
     return response.data;
   }, function (error) {
     return Promise.reject(error);
   });
 
-  // Interceptor para a API Flask
   aiApi.interceptors.response.use(function (response) {
     return response.data;
   }, function (error) {
